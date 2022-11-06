@@ -1,1 +1,1 @@
-### A simple pern_stack login/authentication app
+### A simple pern_stack login-registration/authentication app
