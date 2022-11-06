@@ -27,8 +27,9 @@ router.post("/register", async (req, res) => {
 
     const newUser = await pool.query("INSERT INTO users (user_name, user_email, user_password) VALUES($1,$2,$3) RETURNING *", [name, email, bcryptPassword]);
 
-    res.json(newUser.rows[0])
+    // res.json(newUser.rows[0])
     //5. generate our jwt token
+
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Sever error");
