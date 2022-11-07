@@ -3,8 +3,9 @@ const pool = require('../db')
 const bcrypt = require("bcrypt");
 const jswtGenerator = require('../utils/jwtGenerator');
 const jwtGenerator = require("../utils/jwtGenerator");
+const validInfo = require("../middleware/validinfo")
 //registering
-router.post("/register", async (req, res) => {
+router.post("/register", validInfo, async (req, res) => {
   try {
     //1. destructure the req.body (name,email,password)
 
@@ -42,7 +43,7 @@ router.post("/register", async (req, res) => {
 
 // login route
 
-router.post("/login", async (req, res) => {
+router.post("/login", validInfo, async (req, res) => {
   try {
     //1. destructure req.body
     const { email, password } = req.body;
