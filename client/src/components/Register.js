@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "../App.css";
 const Register = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -76,6 +76,7 @@ const Register = ({ setAuth }) => {
         />
         <button className="btn btn-success btn-block">Submit</button>
       </form>
+      <ToastContainer />
       <Link to="/login" className="btn btn-warning">login</Link>
     </main>
   );
