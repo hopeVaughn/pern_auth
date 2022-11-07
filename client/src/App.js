@@ -1,12 +1,18 @@
-import { Fragment } from 'react';
-import { } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css';
+//components
+import { Dashboard, Login, Register } from "./components";
+
 
 function App() {
   return (
-    <Fragment>
-
-    </Fragment>
+    <Router>
+      <Routes>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 }
 
