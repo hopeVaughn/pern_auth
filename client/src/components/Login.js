@@ -1,6 +1,6 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import "../App.css";
 import { toast } from "react-toastify";
 
 const Login = ({ setAuth }) => {
@@ -34,7 +34,10 @@ const Login = ({ setAuth }) => {
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
         setAuth(true);
-        toast.success("Logged in Successfully");
+        toast.success("Successful Login !", {
+          position: toast.POSITION.TOP_CENTER,
+          className: 'toast-message'
+        });
       } else {
         setAuth(false);
         toast.error(parseRes);
@@ -45,7 +48,7 @@ const Login = ({ setAuth }) => {
   };
 
   return (
-    <Fragment>
+    <main>
       <h1 className="mt-5 text-center">Login</h1>
       <form onSubmit={onSubmitForm}>
         <input
@@ -65,7 +68,7 @@ const Login = ({ setAuth }) => {
         <button className="btn btn-success btn-block">Submit</button>
       </form>
       <Link to="/register" className="btn btn-warning">register</Link>
-    </Fragment>
+    </main>
   );
 };
 

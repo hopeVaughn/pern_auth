@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-
+import "../App.css";
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
 
@@ -23,7 +23,10 @@ const Dashboard = ({ setAuth }) => {
     try {
       localStorage.removeItem("token");
       setAuth(false);
-      toast.success("Logout successfully");
+      toast.success("Successful Logout !", {
+        position: toast.POSITION.TOP_CENTER,
+        className: 'toast-message'
+      });
     } catch (err) {
       console.error(err.message);
     }

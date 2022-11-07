@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import "../App.css";
 const Register = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     email: "",
@@ -33,7 +33,10 @@ const Register = ({ setAuth }) => {
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
         setAuth(true);
-        toast.success("Register Successfully");
+        toast.success("Successful Registration !", {
+          position: toast.POSITION.TOP_CENTER,
+          className: 'toast-message'
+        });
       } else {
         setAuth(false);
         toast.error(parseRes);
