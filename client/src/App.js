@@ -5,6 +5,8 @@ import './App.css';
 import { Dashboard, Login, Register } from "./components";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const checkAuthenticated = async () => {
     try {
       const res = await fetch("http://localhost:5000/authentication/verify", {
@@ -24,7 +26,6 @@ function App() {
     checkAuthenticated();
   }, []);
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const setAuth = boolean => {
     setIsAuthenticated(boolean);
