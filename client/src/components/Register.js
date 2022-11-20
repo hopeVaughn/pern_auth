@@ -1,7 +1,7 @@
-import { React, Fragment, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
-
+import { toast, ToastContainer } from "react-toastify";
+import "../App.css";
 const Register = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     email: "",
@@ -29,7 +29,8 @@ const Register = ({ setAuth }) => {
         }
       );
       const parseRes = await response.json();
-
+      console.log(parseRes);
+      console.log(parseRes);
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
         setAuth(true);
@@ -44,7 +45,7 @@ const Register = ({ setAuth }) => {
   };
 
   return (
-    <Fragment>
+    <main>
       <h1 className="mt-5 text-center">Register</h1>
       <form onSubmit={onSubmitForm}>
         <input
@@ -73,8 +74,9 @@ const Register = ({ setAuth }) => {
         />
         <button className="btn btn-success btn-block">Submit</button>
       </form>
-      <Link to="/login">login</Link>
-    </Fragment>
+      <ToastContainer />
+      <Link to="/login" className="btn btn-warning">login</Link>
+    </main>
   );
 };
 

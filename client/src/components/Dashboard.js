@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-
+import "../App.css";
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
 
   const getProfile = async () => {
     try {
-      const res = await fetch("http://localhost:5000/dashboard", {
-        method: "POST",
+      const res = await fetch("http://localhost:5000/dashboard/", {
+        method: "GET",
         headers: { jwt_token: localStorage.token }
       });
 
       const parseData = await res.json();
-      console.log(parseData);
       setName(parseData.user_name);
     } catch (err) {
       console.error(err.message);
@@ -24,7 +23,10 @@ const Dashboard = ({ setAuth }) => {
     try {
       localStorage.removeItem("token");
       setAuth(false);
-      toast.success("Logout successfully");
+      toast.success("Successful Logout !", {
+        position: toast.POSITION.TOP_CENTER,
+        className: 'toast-message'
+      });
     } catch (err) {
       console.error(err.message);
     }
@@ -41,6 +43,7 @@ const Dashboard = ({ setAuth }) => {
       <button onClick={e => logout(e)} className="btn btn-primary">
         Logout
       </button>
+
     </div>
   );
 };
