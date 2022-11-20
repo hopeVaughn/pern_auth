@@ -23,10 +23,7 @@ const Dashboard = ({ setAuth }) => {
     try {
       localStorage.removeItem("token");
       setAuth(false);
-      toast.success("Successful Logout !", {
-        position: toast.POSITION.TOP_CENTER,
-        className: 'toast-message'
-      });
+      toast.success("Logout successfully");
     } catch (err) {
       console.error(err.message);
     }
@@ -43,7 +40,6 @@ const Dashboard = ({ setAuth }) => {
       <button onClick={e => logout(e)} className="btn btn-primary">
         Logout
       </button>
-
     </div>
   );
 };
