@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import "../App.css";
+
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
 
   const getProfile = async () => {
     try {
       const res = await fetch("http://localhost:5000/dashboard/", {
-        method: "GET",
+        method: "POST",
         headers: { jwt_token: localStorage.token }
       });
 
@@ -34,13 +34,13 @@ const Dashboard = ({ setAuth }) => {
   }, []);
 
   return (
-    <main>
+    <div>
       <h1 className="mt-5">Dashboard</h1>
       <h2>Welcome {name}</h2>
       <button onClick={e => logout(e)} className="btn btn-primary">
         Logout
       </button>
-    </main>
+    </div>
   );
 };
 
